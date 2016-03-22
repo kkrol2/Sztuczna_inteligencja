@@ -62,13 +62,6 @@ Zbiór liczb należy podzielić na 3 podzbiory tak, aby:
 \begin{frame}[t]{Model matematyczny}
 
 \textbf{Wejście problemu:} Dane jest $n$ liczb naturalnych $a_1,\dots,a_n$
-
-
-\end{frame}
-
-\begin{frame}[t]{Model matematyczny}
-
-\textbf{Wejście problemu:} Dane jest $n$ liczb naturalnych $a_1,\dots,a_n$
 \\[0.1in]\textbf{Wyjście problemu:}\\ Dla każdej liczby $a_i$ i zbioru $j$ tworzymy zmienną $x_{i,j}$ oznaczającą czy $a_i$ została przydzielona do zbioru $j$. Wtedy problem można wyrazić za pomocą następującego programu całkowitoliczbowego:
 \begin{equation*}
 \begin{aligned}
@@ -85,7 +78,22 @@ Zbiór liczb należy podzielić na 3 podzbiory tak, aby:
 \section{Górne ograniczenie}
 
 \begin{frame}{Górne ograniczenie}
+Górne ograniczenie można wyznaczyć algorytmem Longest Processing Time. Można udowodnić, że ten algorytm osiąga górne ograniczenie nie gorsze od $11/9*optimal$.\\~\\
+\textbf{LPT:}\\
+\begin{algorithm}[H]
+ $s_1 \gets \emptyset$\;
+ $s_2 \gets \emptyset$\;
+ $s_3 \gets \emptyset$\;
+ $m \gets $ posortowany ciąg wejściowy w nierosnącej kolejności\;
+ $iter \gets 0$\;
+ \While{$iter < n$}{
+    $s \gets min(s_1,s_2,s_3)$\;
+    $s \gets s \cup \{m_iter\}$\;
+    $iter \gets iter+1$\;
+  }
+\end{algorithm} 
 
+  
 
 \end{frame}
 
