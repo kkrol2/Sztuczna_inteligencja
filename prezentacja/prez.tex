@@ -78,7 +78,7 @@ Zbiór liczb należy podzielić na 3 podzbiory tak, aby:
 \section{Górne ograniczenie}
 
 \begin{frame}{Górne ograniczenie}
-Górne ograniczenie można wyznaczyć algorytmem Longest Processing Time. Można udowodnić, że ten algorytm osiąga górne ograniczenie nie gorsze od $11/9*optimal$.\\~\\
+Górne ograniczenie można wyznaczyć algorytmem Longest Processing Time. Można udowodnić, że ten algorytm osiąga górne ograniczenie nie gorsze od $11/9*optimal$ dla problemu podziału ciągu, w którym chcemy minimalizować sumę elementów największego podzbioru.\\~\\
 \textbf{LPT:}\\
 \begin{algorithm}[H]
  $s_1 \gets \emptyset$\;
@@ -107,8 +107,14 @@ Jakieś pomysły?
 
 \section{Algorytm}
 
-\begin{frame}{Algorytm - metaheurystyka}
+\begin{frame}{Algorytmy}
 
+
+\begin{itemize}  
+\item Algorytm pseudo wielomianowy O($M^2n$) gdzie M to suma elementów ciągu wejściowego
+\item Heurystyka Karmakar-Karp
+\item Meta-heurystyka - symulowane wyżarzanie
+\end{itemize}
 
 \end{frame}
 
