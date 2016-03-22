@@ -99,9 +99,35 @@ Górne ograniczenie można wyznaczyć algorytmem Longest Processing Time. Można
 
 \section{Dolne ograniczenie}
 
-\begin{frame}{Dolne ograniczenie}
+\begin{frame}[t]{Dolne ograniczenie}
 
-Jakieś pomysły?
+Oczywistym dolnym ograniczeniem jest $0$.
+
+\end{frame}
+
+\begin{frame}[t]{Dolne ograniczenie}
+
+Oczywistym dolnym ograniczeniem jest $0$.
+
+Problem stwierdzenia czy można liczby podzielić na $3$ zzbiory, w taki sposób żeby ich suma jest równa jest $\mathcal{NP}$-trudne, więc można się spodziewać, że proste dolne ograniczenia często będą zwracać $0$.
+
+\end{frame}
+
+\begin{frame}[t]{Dolne ograniczenie}
+
+Rozważmy $4$ największe przedmioty $a_1, a_2, a_3$ i $a_4$. Wśród nich są $2$ takie, które będą w tym samym zbiorze, więc jeden ze zbiorów będzie miał wagę co najmniej taką jak suma wag $2$ najlżejszych przedmiotów, powiedzmy $a_3$ i $a_4$.
+
+Różnica między $a_3+a_4$ a sumą wszystkich liczb podzielonych przez $3$ daje nam dolne ograniczenie.
+
+\end{frame}
+
+\begin{frame}[t]{Dolne ograniczenie}
+
+Rozważmy $4$ największe przedmioty $a_1, a_2, a_3$ i $a_4$. Wśród nich są $2$ takie, które będą w tym samym zbiorze, więc jeden ze zbiorów będzie miał wagę co najmniej taką jak suma wag $2$ najlżejszych przedmiotów, powiedzmy $a_3$ i $a_4$.
+
+Różnica między $a_3+a_4$ a sumą wszystkich liczb podzielonych przez $3$ daje nam dolne ograniczenie.
+
+Zamiast rozważać $4$ największe przedmioty możemy rozważać $k$ największych przedmiotów i wybierać $\lceil \frac{k}{3} \rceil$ z nich. Największa różnica da nam najlepsze dolne ograniczenie.
 
 \end{frame}
 
