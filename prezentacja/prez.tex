@@ -22,6 +22,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{amsfonts}
 \usepackage[]{algorithm2e}
+\usepackage{lmodern}
 
 \title{Problem podziału na 3 podzbiory}
 \author{
@@ -32,6 +33,7 @@
 
 \begin{document}
 
+\section{Wstęp}
 \begin{frame}
   \titlepage
 \end{frame}
@@ -57,11 +59,26 @@ Zbiór liczb należy podzielić na 3 podzbiory tak, aby:
 
 \section{Model matematyczny}
 
-\begin{frame}{Model matematyczny}
+\begin{frame}[t]{Model matematyczny}
 
-\textbf{Wejście problemu:}
-\\[0.1in]\textbf{Wyjście problemu:}\\
+\textbf{Wejście problemu:} Dane jest $n$ liczb naturalnych $a_1,\dots,a_n$
 
+
+\end{frame}
+
+\begin{frame}[t]{Model matematyczny}
+
+\textbf{Wejście problemu:} Dane jest $n$ liczb naturalnych $a_1,\dots,a_n$
+\\[0.1in]\textbf{Wyjście problemu:}\\ Dla każdej liczby $a_i$ i zbioru $j$ tworzymy zmienną $x_{i,j}$ oznaczającą czy $a_i$ została przydzielona do zbioru $j$. Wtedy problem można wyrazić za pomocą następującego programu całkowitoliczbowego:
+\begin{equation*}
+\begin{aligned}
+\min &\left| \sum_{i=1}^n x_{i,1} a_i - \sum_{i=1}^n x_{i,2} a_i \right| + \left| \sum_{i=1}^n x_{i,1} a_i - \sum_{i=1}^n x_{i,3} a_i\right| \\
+&\qquad\qquad\qquad\qquad\quad\:+ \left| \sum_{i=1}^n x_{i,2} a_i - \sum_{i=1}^n x_{i,3} a_i\right| \\
+& x_{i,1} + x_{i,2} + x_{i,3} = 1 \quad\quad \forall i\in \{1,\dots,n\} \\
+& x_{i,j} \in \{0,1\} \,\,\,\quad\qquad\qquad \forall i\in \{1,\dots,n\}\quad \forall j\in \{1,2,3\}
+\end{aligned}
+\phantom{\hspace{6cm}}
+\end{equation*}
 
 \end{frame}
 
