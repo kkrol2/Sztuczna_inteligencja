@@ -1,0 +1,88 @@
+
+              
+\documentclass{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+  \usetheme{default}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme{default}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+} 
+
+\usepackage{polski}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[]{algorithm2e}
+\usepackage{lmodern}
+
+\title{Problem podziału na 3 podzbiory}
+\author{
+       Krzysztof Król\and
+                Szymon Dudycz
+}
+\date{\today}
+
+\begin{document}
+
+\section{Wstęp}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Uncomment these lines for an automatically generated outline.
+%\begin{frame}{Outline}
+%  \tableofcontents
+%\end{frame}
+
+\section{Opis problemu}
+
+\begin{frame}{Opis problemu}
+
+Zbiór liczb należy podzielić na 3 podzbiory tak, aby:
+\begin{itemize}  
+\item każda liczba należała do dokładnie jednego podzbioru
+\item sumy liczb elementów każdego podzbioru jak najmniej się różniły
+\end{itemize}
+
+
+\end{frame}  
+
+\end{frame}
+
+\section{Dolne ograniczenie}
+
+\begin{frame}[t]{Dolne ograniczenie}
+
+Rozważmy $4$ największe przedmioty $a_1, a_2, a_3$ i $a_4$. Wśród nich są $2$ takie, które będą w tym samym zbiorze, więc jeden ze zbiorów będzie miał wagę co najmniej taką jak suma wag $2$ najlżejszych przedmiotów, powiedzmy $a_3$ i $a_4$.
+
+Różnica między $a_3+a_4$ a sumą wszystkich liczb podzielonych przez $3$ daje nam dolne ograniczenie.
+
+\pause
+
+Zamiast rozważać $4$ największe przedmioty możemy rozważać $k$ największych przedmiotów i wybierać $\lceil \frac{k}{3} \rceil$ z nich. Największa różnica da nam najlepsze dolne ograniczenie.
+
+\end{frame}
+
+\section{Algorytm}
+
+\begin{frame}{Algorytmy}
+
+
+\begin{itemize}
+\item Heurystyka Karmakar-Karp
+\item Meta-heurystyka - symulowane wyżarzanie
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}
