@@ -11,12 +11,12 @@ public class Annealing {
 	}
 
     public int solve( int[] set ) {
-        return solve(set, 0.99);
+        return solve(set, 0.9999);
     }
 
 	public int solve( int[] set, double alpha ) {
-		double T = 1.0;
-		double T_min = 0.000001;
+		double T = 10000000.0;
+		double T_min = 1.0;
 		State s = new State(set);
         State best = new State(set);
         int steps = 0;
@@ -28,6 +28,7 @@ public class Annealing {
 				s = neighbour;
 			} else {
 				double prob = Math.exp((s.cost() - neighbour.cost()) / T);
+                //System.out.println(prob);
 				if( prob > r.nextDouble() ) {
 					s = neighbour;
 				}
@@ -70,6 +71,139 @@ public class Annealing {
                 s3.add(elem);
             }
     	}
+
+        State get_random_neighbour() {
+            int n1 = s1.size();
+            int n2 = s2.size();
+            int n3 = s3.size();
+
+            int possibilities = 2 * n1 + 2 * n2 + 2 * n3;
+
+            int choice = r.nextInt(possibilities);
+
+            State n = new State(s1, s2, s3);
+
+            if( choice >= 2 * n1 ) {
+                choice -= 2 * n1;
+            } else if( choice >= n1 ) {
+                choice -= n1;
+                int elem = n.s1.remove(choice);
+                n.s2.add(elem);
+                return n;
+            } else {
+                int elem = n.s1.remove(choice);
+                n.s3.add(elem);
+                return n;           
+            }
+
+            if( choice >= 2 * n2 ) {
+                choice -= 2 * n2;
+            } else if( choice >= n2 ) {
+                choice -= n2;
+                int elem = n.s2.remove(choice);
+                n.s1.add(elem);
+                return n;
+            } else {
+                int elem = n.s2.remove(choice);
+                n.s3.add(elem);
+                return n;           
+            }
+
+            if( choice >= n3 ) {
+                choice -= n3;
+                int elem = n.s3.remove(choice);
+                n.s1.add(elem);
+                return n;
+            } else {
+                int elem = n.s3.remove(choice);
+                n.s2.add(elem);
+                return n;           
+            }
+        }
+
+        /*
+
+        State get_random_neighbour() {
+            int n1 = s1.size();
+            int n2 = s2.size();
+            int n3 = s3.size();
+
+            int possibilities = 2 * n1 + 2 * n2 + 2 * n3 + n1 * n2 + n1 * n3 + n2 * n3;
+
+            int choice = r.nextInt(possibilities);
+
+            State n = new State(s1, s2, s3);
+
+            if( choice >= 2 * n1 ) {
+                choice -= 2 * n1;
+            } else if( choice >= n1 ) {
+                choice -= n1;
+                int elem = n.s1.remove(choice);
+                n.s2.add(elem);
+                return n;
+            } else {
+                int elem = n.s1.remove(choice);
+                n.s3.add(elem);
+                return n;           
+            }
+
+            if( choice >= 2 * n2 ) {
+                choice -= 2 * n2;
+            } else if( choice >= n2 ) {
+                choice -= n2;
+                int elem = n.s2.remove(choice);
+                n.s1.add(elem);
+                return n;
+            } else {
+                int elem = n.s2.remove(choice);
+                n.s3.add(elem);
+                return n;           
+            }
+
+            if( choice >= 2 * n3 ) {
+                choice -= 2 * n3;
+            } else if( choice >= n3 ) {
+                choice -= n3;
+                int elem = n.s3.remove(choice);
+                n.s1.add(elem);
+                return n;
+            } else {
+                int elem = n.s3.remove(choice);
+                n.s2.add(elem);
+                return n;           
+            }
+
+            if( choice >= n1 * n2 ) {
+                choice -= n1 * n2;
+            } else {
+                int e1 = n.s1.remove(choice % n1);
+                int e2 = n.s2.remove(choice / n1);
+                n.s1.add(e2);
+                n.s2.add(e1);
+                return n;
+            }
+
+            if( choice >= n1 * n3 ) {
+                choice -= n1 * n3;
+            } else {
+                int e1 = n.s1.remove(choice % n1);
+                int e2 = n.s3.remove(choice / n1);
+                n.s1.add(e2);
+                n.s3.add(e1);
+                return n;
+            }
+
+            int e1 = n.s3.remove(choice % n3);
+            int e2 = n.s2.remove(choice / n3);
+            n.s3.add(e2);
+            n.s2.add(e1);
+            return n;
+
+        }
+        */
+
+
+        /*
 
     	State get_random_neighbour() {
     		int n1 = s1.size();
@@ -170,6 +304,8 @@ public class Annealing {
     			return n;
     		}
     	}
+
+        */
 
     	int cost() {
     		int sum1 = 0;

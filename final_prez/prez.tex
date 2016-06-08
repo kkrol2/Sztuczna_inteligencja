@@ -53,9 +53,42 @@ Zbiór liczb należy podzielić na 3 podzbiory tak, aby:
 \item sumy liczb elementów każdego podzbioru jak najmniej się różniły
 \end{itemize}
 
-
 \end{frame}  
 
+\section{Algorytmy}
+
+\begin{frame}{Algorytmy}
+\begin{itemize}
+\item Heurystyka dla Longest Processing Time
+\item Heurystyka Karmakar-Karp
+\item Meta-heurystyka - symulowane wyżarzanie
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Longest Processing Time}
+Górne ograniczenie można wyznaczyć algorytmem Longest Processing Time. Można udowodnić, że ten algorytm osiąga górne ograniczenie nie gorsze od $11/9*optimal$ dla problemu podziału ciągu, w którym chcemy minimalizować sumę elementów największego podzbioru.\\~\\
+\textbf{LPT:}\\
+\begin{algorithm}[H]
+ $s_1 \gets \emptyset$\;
+ $s_2 \gets \emptyset$\;
+ $s_3 \gets \emptyset$\;
+ $m \gets $ posortowany ciąg wejściowy w nierosnącej kolejności\;
+ $iter \gets 0$\;
+ \While{$iter < n$}{
+    $s \gets min(s_1,s_2,s_3)$\;
+    $s \gets s \cup \{m_{iter}\}$\;
+    $iter \gets iter+1$\;
+  }
+\end{algorithm} 
+\end{frame}
+
+\begin{frame}{Symulowane Wyżarzanie}
+  \begin{itemize}
+    \item Jako sąsiadów obecnego stanu rozważamy te podziały, które można osiągnąć przenosząc jeden element.
+    \item Prawdopodobieństwo przejścia do sąsiedniego stanu to $e^{\frac{(c_{old} - c_{new})}{T}}$
+    \item \textasciitilde 160000 kroków
+  \end{itemize}
+  \end{frame}
 
 \section{Dolne ograniczenie}
 
@@ -71,16 +104,30 @@ Zamiast rozważać $4$ największe przedmioty możemy rozważać $k$ największy
 
 \end{frame}
 
-\section{Algorytm}
+\section{Eksperymenty obliczeniowe}
 
-\begin{frame}{Algorytmy}
-
-
-\begin{itemize}
-\item Heurystyka Karmakar-Karp
-\item Meta-heurystyka - symulowane wyżarzanie
-\end{itemize}
-
+\begin{frame}{Eksperymenty obliczeniowe}
+  \begin{tabular}{|c|c|c|c|c|}
+  \hline
+  $n$  & Dolne ogr. & Karamar-Karp & Wyżarzanie & LPT \\
+  \hline
+  10 & 38 & 1315 & 598 & 2305 \\
+  \hline
+  20 & 0 & 238 & 116 & 1318 \\
+  \hline
+  50 & 0 & 16 & 78 & 617 \\
+  \hline
+  100 & 0 & 2 & 68 & 318 \\
+  \hline
+  200 & 0 & 1 & 69 & 283 \\
+  \hline
+  500 & 0 & 1 & 55 & 218 \\
+  \hline
+  1000 & 0 & 1 & 42 & 200 \\
+  \hline
+  2000 & 0 & 1 & 46 & 205 \\
+  \hline
+  \end{tabular}
 \end{frame}
 
 
